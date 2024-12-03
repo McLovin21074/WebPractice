@@ -4,37 +4,44 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакты</title>
+    <link rel="stylesheet" href="./assets/styles/style.css">
   </head>
   <body>
     <header>
-        <img src = "img.png">
+        <img src = "./assets/img/img.png">
       <nav>
         <ul>
           <li><a href="index.html">Главная</a></li>
           <li><a href="contacts.html">Контакты</a></li>
         </ul>
       </nav>
+      <ul class="breadcrumbs">
+        <a>Раз</a>
+        <a>Два</a>
+        <a>Три</a>
+        <a>Четыре</a>       
+      </ul>
     </header>
     <section>
-        <h2>Contact Us</h2>
-        <p>Тут 10 симво</p>
-        <img src = "contacts_img.png">
+        <h2 class = "head-two">Contact Us</h2>
+        <p class="paragraph">Тут 10 симво</p>
+        <img src = "./assets/img/contacts_img.png">
     </section>
 
     <section>
-        <h4>Address</h4>
-        <p>Тут 7 сим</p>
+        <h4 class = "head-four">Address</h4>
+        <p class="paragraph">Тут 7 сим</p>
     </section>
 
     <section>
-        <h4>Phone</h4>
+        <h4 class = "head-four">Phone</h4>
         <ul>
         <li>Номер для связи: 84357295748</li>
         <li>Запасной номер: 8547586903</li>
         </ul>
     </section>
     <section>
-        <h4>Online service</h4>
+        <h4 class = "head-four">Online service</h4>
         <ul>
         <li><a href="https://utmn.ru">Наш сайт</a></li>
         <li><a href="mailto:html_is_cool_2010@mail.ru">html_is_cool_2010@mail.ru</a></li>
@@ -42,31 +49,31 @@
     </section>
 
     <section>
-        <h4>Send us message</h4>
+        <h4 class = "head-four">Send us message</h4>
         <form>
             <label for = "name">Full Name</label>
-            <input id = "name" type = "text">
+            <input class = "input" id = "name" type = "text">
             <br><br>
             <label for = "email">Email</label>
-            <input id = "email" type = "email">
+            <input class = "input" id = "email" type = "email">
             <br><br>
             <label for = "message">Message</label>
-            <textarea id = "message"></textarea>
+            <textarea class = "input" id = "message"></textarea>
             <br><br>
-            <button type="submit">Submit</button>
+            <button class = "send-button1" type="submit">Submit</button>
         </form>
 
     </section>
     <footer>
-        <h3>Подвал сайта</h3>
-        <p>Параграф в подвале сайта перед списком контактов</p>
+        <h3 class = "head-three">Подвал сайта</h3>
+        <p class="paragraph">Параграф в подвале сайта перед списком контактов</p>
         <hr>
         <ul>
           <li>Список контактов:</li>
           <li>88005553535</li>
           <li>html_is_cool_2010@mail.ru</li>
         </ul>
-        <p>Все права защищены</p>
+        <p class="paragraph">Все права защищены</p>
       </footer>
   </body>
 </html>

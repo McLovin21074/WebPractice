@@ -9,3 +9,122 @@
 .test {
     color: red !important;
 }
+
+.paragraph {
+    font-size: 16px;
+    line-height: 26px;
+    color: #1F3F68;
+}
+
+.head-one {
+    font-size: 64px;
+    color: #1F3F68;
+}
+
+.head-two {
+    font-weight: 500;
+    font-size: 44px;
+    text-align: center;
+}
+
+.head-three {
+    font-size: 36px;
+    text-align: center;
+}
+
+.head-four {
+    font-size: 20px;
+    line-height: 30px;
+    color: #1F3F68;
+}
+
+.input {
+    border: 1px solid #356EAD;
+    box-sizing: border-box;
+    border-radius: 10px;
+    opacity: 0.4;
+}
+
+.send-button {
+    background: #5A98D0;
+    box-shadow: 5px 20px 50px rgba(16, 112, 177, 0.2);
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    text-align: center;
+    color: #FFFFFF;
+    text-transform: uppercase;
+
+}
+
+.send-button1 {
+    cursor: pointer;
+    background: linear-gradient(to right, rgb(73, 117, 229), rgb(140, 85, 233));
+    box-shadow: 5px 20px 50px rgba(16, 112, 177, 0.2);
+    border-radius: 10px;
+    border: none;
+    padding: 15px 30px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    text-align: center;
+    color: #FFFFFF;
+    text-transform: uppercase;
+}
+
+.breadcrumbs{
+    box-shadow: 0 0 3px rgba(0,0,0, 0.2);
+    overflow: hidden;
+    width: 100%;
+    margin-top:15px;
+    margin-left:-20px;
+    background-image: linear-gradient(to top, rgb(127, 190, 191), #FFFFFF);
+}
+  
+.breadcrumbs a{
+    padding: .7em 1em .7em 2em;
+    float: left;
+    text-decoration: none;
+    color: #444;
+    position: relative;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);   
+}
+
+
+.breadcrumbs a::before{
+    content: "";  
+	height:42px;
+	width:20px;
+    background: #FFFFFF;
+    border-right-style: solid;
+	border-radius:0px 40px 40px 0px;
+    position: absolute; left: 5px; top: 0;
+}
+
+.breadcrumbs a:first-child::before{
+    content: "";
+    border: none;
+	background: linear-gradient(to top, rgb(127, 190, 191), #FFFFFF);
+}
+
+.breadcrumbs a::after{
+    content: ""; 
+	height:42px;
+	width:20px;
+	background:linear-gradient(to top, rgb(127, 190, 191), #FFFFFF);
+	border-radius:0px 40px 40px 0px;
+	position: absolute; right: -20px; top: 0;
+    z-index: 1;
+}
+
+.breadcrumbs a:last-child::after{
+    content: ""; 
+	height:42px;
+	width:20px;
+	background:linear-gradient(to top, rgb(127, 190, 191), #FFFFFF);
+	border-radius:0px 40px 40px 0px;
+    border-right-style: solid;
+	position: absolute; right: -20px; top: 0;
+    z-index: 1;
+}
