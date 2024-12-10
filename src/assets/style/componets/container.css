@@ -1,18 +1,17 @@
-.container {
-  padding: 0 12px;
+.content-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between; 
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 90px;
 }
 
-@media screen and (min-width: 1024px) {
-  .container {
-    padding: 0 16px;
-  }
+.intro-and-form {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
 }
-@media screen and (min-width: 1920px) {
-  .container {
-    padding: 0;
-    width: 1600px;
-    margin: auto;
-  }
-}
-
-/*# sourceMappingURL=container.css.map */
