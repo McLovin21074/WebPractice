@@ -1,6 +1,8 @@
 @import "fonts.css";
+@import "container.css";
 @import "header.css";
 @import "form.css";
-@import "presentation-image.css";
-@import "container.css";
 @import "footer.css";
+@import "development-info.css";
+@import "industries.css";
+@import "projects.css";
