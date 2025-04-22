@@ -86,19 +86,52 @@ class Pizza {
             sizeKey = 'large';
           } else {
             sizeKey = 'small';
-          }          return total + Pizza.toppings[topping][sizeKey].calories;
+          }          
+          return total + Pizza.toppings[topping][sizeKey].calories;
         }
       }, baseCalories + sizeCalories);
     }
   }
   
-  const margarita = new Pizza('Маргарита', 'большая');
-  margarita.addTopping('сырный борт');
-  console.log(margarita.calculatePrice());
-  console.log(margarita.calculateCalories());
-  
-  const pepperoni = new Pizza('Пепперони', 'маленькая');
-  pepperoni.addTopping('сливочная моцарелла');
-  pepperoni.addTopping('чеддер и пармезан');
-  console.log(pepperoni.calculatePrice());
-  console.log(pepperoni.calculateCalories());
+
+let selectedPizza = new Pizza('Маргарита', 'маленькая');
+
+const pizzaOptions = document.querySelectorAll('.pizza-option');
+pizzaOptions.forEach((el) => {
+  el.addEventListener('click', () => {
+    const name = el.innerText.trim();
+    selectedPizza = new Pizza(name, selectedPizza.size);
+    updateDisplay();
+  });
+});
+
+const sizeButtons = document.querySelectorAll('.size-switch button');
+sizeButtons.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    sizeButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedPizza.size = btn.innerText.toLowerCase();
+    updateDisplay();
+  });
+});
+
+const toppingCards = document.querySelectorAll('.topping-card');
+toppingCards.forEach(card => {
+  card.addEventListener('click', () => {
+    const topping = card.innerText.split('\n')[0].trim().toLowerCase();
+    if (selectedPizza.toppingsList.includes(topping)) {
+      selectedPizza.removeTopping(topping);
+      card.classList.remove('active');
+    } else {
+      selectedPizza.addTopping(topping);
+      card.classList.add('active');
+    }
+    updateDisplay();
+  });
+});
+
+function updateDisplay() {
+  const price = selectedPizza.calculatePrice();
+  const calories = selectedPizza.calculateCalories();
+  document.querySelector('.add-to-cart').innerText = `Добавить в корзину за ${price}₽ (${calories} кКал)`;
+}

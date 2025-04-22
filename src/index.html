@@ -1,18 +1,53 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="/src/assets/styles/style.css">
+  <meta charset="UTF-8">
+  <title>Пицца</title>
+  <link rel="stylesheet" href="assets/styles/style.css">
 </head>
 <body>
-<div class="test" style="color: blue">
-    test
-</div>
+  <div class="container">
+    <div class="pizza-selection">
+      <div class="pizza-option">
+        <img src="assets/img/pepperoni.jpeg" alt="Пепперони">
+        <p>Пепперони</p>
+      </div>
+      <div class="pizza-option">
+        <img src="assets/img/margarita.jpeg" alt="Маргарита">
+        <p>Маргарита</p>
+      </div>
+      <div class="pizza-option">
+        <img src="assets/img/bavarskaya.jpeg" alt="Баварская">
+        <p>Баварская</p>
+      </div>
+    </div>
 
-<script src="index.js"></script>
+    <div class="right-panel">
+      <h3>Выберите размер</h3>
+      <div class="size-switch">
+        <button class="active">Маленькая</button>
+        <button>Большая</button>
+      </div>
+
+      <h3>Добавить по вкусу</h3>
+      <div class="toppings">
+        <div class="topping-card">
+          <img src="assets/img/cheese.jpg" alt="Сырный борт">
+          <p>Сырный борт<br><span>189₽</span></p>
+        </div>
+        <div class="topping-card">
+          <img src="assets/img/mozzarella.jpg" alt="Сливочная моцарелла">
+          <p>Сливочная моцарелла<br><span>99₽</span></p>
+        </div>
+        <div class="topping-card">
+          <img src="assets/img/cheddar.jpg" alt="Чеддер и пармезан">
+          <p>Чеддер и пармезан<br><span>99₽</span></p>
+        </div>
+      </div>
+
+      <button class="add-to-cart">Добавить в корзину за 559₽ (900 кКал)</button>
+    </div>
+  </div>
+  <script src="pizza.js"></script>
 </body>
 </html>
