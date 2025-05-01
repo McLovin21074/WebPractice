@@ -1,97 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<meta charset="UTF-8">
+
 <?php
-function printNumbers() {
-    $i = 0;
-    do {
-        if ($i === 0) {
-            echo "$i – это ноль.<br>";
-        } elseif ($i % 2 === 0) {
-            echo "$i – чётное число.<br>";
-        } else {
-            echo "$i – нечётное число.<br>";
-        }
-        $i++;
-    } while ($i <= 10);
-}
+$imagesDir = 'images';
+$fileTypes = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+$maxSize = 10 * 1024 * 1024; 
 
+logImage();
 
-function cities() {
-    $regions = [
-        'Московская область' => ['Москва', 'Зеленоград', 'Клин'],
-        'Ленинградская область' => ['Санкт-Петербург', 'Всеволожск', 'Павловск', 'Кронштадт'],
-        'Рязанская область' => ['Рязань', 'Скопин', 'Михайлов']
-    ];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['files_input'])) {
+    $file = $_FILES['files_input'];
+    $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
 
-    foreach ($regions as $region => $cities) {
-        echo "$region:<br>";
-        echo implode(', ', $cities) . ".<br>";
-        echo "<br>";
+    if (in_array($ext, $fileTypes) && $file['size'] <= $maxSize) {
+        $name = basename($file['name']);
+        move_uploaded_file($file['tmp_name'], "$imagesDir/$name");
+        header("Location: index.php");
+        exit;
     }
 }
 
-$translitMap = [
-    'а'=>'a','б'=>'b','в'=>'v','г'=>'g','д'=>'d','е'=>'e','ё'=>'yo','ж'=>'zh','з'=>'z','и'=>'i',
-    'й'=>'y','к'=>'k','л'=>'l','м'=>'m','н'=>'n','о'=>'o','п'=>'p','р'=>'r','с'=>'s','т'=>'t',
-    'у'=>'u','ф'=>'f','х'=>'h','ц'=>'ts','ч'=>'ch','ш'=>'sh','щ'=>'sch','ъ'=>'','ы'=>'y','ь'=>'',
-    'э'=>'e','ю'=>'yu','я'=>'ya'
-];
+$files = array_filter(scandir($imagesDir), fn($f) => in_array(strtolower(pathinfo($f, PATHINFO_EXTENSION)), $fileTypes));
 
-function transliterate($string, $map) {
-    $string = mb_strtolower($string);
-    return strtr($string, $map);
-}
+function logImage() {
+    $logFile = 'log0.txt';
+    $time = date("Y-m-d H:i:s");
 
-$menu = [
-    'Главная',
-    'Пункт 1' => [
-        'Подпункт 1',
-        'Подпункт 2',
-        'Подпункт 3'
-    ],
-    'Пункт 2' => [
-        'Подпункт 1',
-        'Подпункт 2',
-        'Подпункт 3'
-    ],
-    'Пункт 3'
-];
-
-function renderMenu($menu) {
-    echo "<ul>";
-    foreach ($menu as $key => $item) {
-        if (is_array($item)) {
-            echo "<li>$key";
-            renderMenu($item);
-            echo "</li>";
-        } else {
-            echo "<li>$item</li>";
-        }
+    if (!file_exists($logFile)) file_put_contents($logFile, '');
+    $lines = file($logFile, FILE_IGNORE_NEW_LINES);
+    
+    if (count($lines) >= 10) {
+        $i = 1;
+        while (file_exists("log{$i}.txt")) $i++;
+        rename($logFile, "log{$i}.txt");
+        file_put_contents($logFile, '');
     }
-    echo "</ul>";
-}
 
-renderMenu($menu);
+    file_put_contents($logFile, "Request: $time\n", FILE_APPEND);
+}
 ?>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Практическая работа 18</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body> 
-        <div class="content">
-            <h1>Задание 1</h1>
-            <p><?php printNumbers() ?></p>
-            <h1>Задание 2</h1>
-            <p><?php cities() ?></p>
-            <h1>Задание 3</h1>
-            <p><?php echo transliterate("Тюмень", $translitMap) ?></p>
-            <h1>Задание 4</h1>
-            <?php renderMenu($menu) ?>
-        </div>
-    </body>
+<body>
+    <h1>Практическая работа 19</h1>
+
+    <?php foreach ($files as $file): ?>
+        <a href="<?= "$imagesDir/$file" ?>" target="_blank">
+            <img src="<?= "$imagesDir/$file" ?>" style="max-width: 350px; max-height: 190px; padding: 10px;">
+        </a>
+    <?php endforeach; ?>
+
+    <form action="index.php" method="post" enctype="multipart/form-data" style="margin-top:20px">
+        <input type="file" name="files_input" required>
+        <button type="submit">Загрузить</button>
+    </form>
+</body>
 </html>
