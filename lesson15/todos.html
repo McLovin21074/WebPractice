@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Todo List</title>
     <link rel="stylesheet" href="./src/assets/styles/style.css">
 </head>
 <body>
@@ -19,16 +19,19 @@
 
 <main class="main">
 
+    <div class="todo-form">
+        <input type="text" id="toDoInput" placeholder="Новая задача">
+        <button type="submit" id="toDoInputConfirm">Add</button>
+    </div>
+
+    <div id="todoList"></div>
+
 </main>
 
 <div class="loader-wrapper" data-loading>
-    <img
-            src="./src/assets/icons/loader.svg"
-            alt=""
-            class="loader"
-    >
+    <img src="./src/assets/icons/loader.svg" alt="Загрузка..." class="loader">
 </div>
 
-<script src="src/pages/todos.js" type="module"></script>
+<script type="module" src="src/pages/todos.js?v=2"></script>
 </body>
 </html>

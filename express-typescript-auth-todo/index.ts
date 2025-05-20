@@ -3,7 +3,8 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from 'dotenv'
 dotenv.config({path: `.${process.env.NODE_ENV}.env`})
-
+console.log('NODE_ENV =', process.env.NODE_ENV)
+console.log('CLIENT_URL =', process.env.CLIENT_URL)
 import router from "./router/index";
 import errorMiddleware from "./middleware/error.middleware";
 
